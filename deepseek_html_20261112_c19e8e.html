@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Chemistry Simulation: Solubility & Saturation</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Load Three.js and OrbitControls via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+    <!-- 3D Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- UI Overlay Dashboard -->
+    <div id="ui-dashboard">
+        <h2>Virtual Chemistry Lab</h2>
+        
+        <div class="control-group">
+            <label for="water-slider">Water Level (Solvent):</label>
+            <input type="range" id="water-slider" min="0" max="100" value="0">
+        </div>
+
+        <div class="control-group">
+            <label>Solute Type:</label>
+            <div class="solute-buttons">
+                <button class="solute-btn active" data-type="salt" style="border-color: #ffffff;">Salt (White)</button>
+                <button class="solute-btn" data-type="sugar" style="border-color: #ffcc00;">Sugar (Yellow)</button>
+                <button class="solute-btn" data-type="crystal" style="border-color: #0055ff;">Crystals (Blue)</button>
+            </div>
+        </div>
+
+        <div class="control-group action-buttons">
+            <button id="add-solute-btn">Add Solute (1 Spoon)</button>
+            <button id="stir-btn">Stir Water</button>
+        </div>
+
+        <div class="control-group">
+            <label>Temperature:</label>
+            <button id="temp-toggle" class="cold">Cold Water (20°C)</button>
+        </div>
+
+        <button id="reset-btn" class="danger">Reset Experiment</button>
+    </div>
+
+    <!-- Real-time HUD Statistics -->
+    <div id="hud">
+        <p><strong>Status:</strong> <span id="status-text">Empty</span></p>
+        <p><strong>Solute Added:</strong> <span id="solute-count">0</span> spoons</p>
+        <p><strong>Temp:</strong> <span id="temp-text">20°C</span></p>
+    </div>
+
+    <!-- Load our custom simulation logic last -->
+    <script src="simulation.js"></script>
+</body>
+</html>
