@@ -1,8 +1,13 @@
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e0f7fa; /* Soft light blue background */
+    background-color: #e0f7fa;
 }
 
 #canvas-container {
@@ -19,7 +24,9 @@ body {
     top: 20px;
     left: 20px;
     width: 280px;
-    background: rgba(255, 255, 255, 0.85);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 20px;
@@ -52,6 +59,7 @@ label {
 input[type="range"] {
     width: 100%;
     cursor: pointer;
+    accent-color: #00838f;
 }
 
 .solute-buttons {
@@ -68,13 +76,19 @@ input[type="range"] {
     border: 2px solid #ccc;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+}
+
+.solute-btn:hover {
+    border-color: #00838f;
 }
 
 .solute-btn.active {
     background: #e0f7fa;
+    border-color: #00838f;
+    color: #006064;
     font-weight: bold;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(0, 131, 143, 0.2);
 }
 
 .action-buttons {
@@ -91,7 +105,7 @@ button {
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.2s;
+    transition: background 0.2s ease;
 }
 
 button:hover {
@@ -108,11 +122,11 @@ button.danger:hover {
 }
 
 #temp-toggle {
-    background: #0288d1; /* Cold blue */
+    background: #0288d1;
 }
 
 #temp-toggle.hot {
-    background: #e64a19; /* Hot orange */
+    background: #e64a19;
 }
 
 #hud {
@@ -133,6 +147,28 @@ button.danger:hover {
 }
 
 #status-text {
-    color: #4caf50; /* Green for unsaturated */
+    color: #4caf50;
     font-weight: bold;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 600px) {
+    #ui-dashboard {
+        width: 240px;
+        top: 10px;
+        left: 10px;
+        padding: 15px;
+    }
+
+    #hud {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+        min-width: 150px;
+        padding: 10px 15px;
+    }
+
+    #hud p {
+        font-size: 0.85rem;
+    }
 }
